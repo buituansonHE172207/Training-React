@@ -15,14 +15,16 @@ pipeline {
                     def imageName = "tuansondocker1407/trainning-react"
                     def imageTag = "latest"
 
-                    // Build the Docker image
-                    sh "docker build -t ${imageName}:${imageTag} ."
+                    withDockerRegistry(credentialsId: '80384759-3b6e-4b9f-a0dc-9b8bc81a08b8', url: 'https://index.docker.io/v1/') {
+                        // Build the Docker image
+                        docker.build("${imageName}:${imageTag}")
 
-                    // Push the Docker image to Docker Hub
-                    sh "docker push ${imageName}:${imageTag}"
+                        // Push the Docker image to Docker Hub
+                        docker.image("${imageName}:${imageTag}").push()
 
-                    // Optional: Pull the image back to verify it's pushed correctly
-                    sh "docker pull ${imageName}:${imageTag}"
+                        // Optional: Pull the image back to verify it's pushed correctly
+                        docker.image("${imageName}:${imageTag}").pull()
+                    }
                 }
             }
         }
