@@ -1,0 +1,33 @@
+pipeline {
+    agent any
+    
+    stages {
+        stage('Clone') {
+            steps {
+                git branch: 'main', url: 'https://github.com/buituansonHE172207/Training-React'
+            }
+        }
+        
+        // Add more stages here
+        
+    //     stage('Build') {
+    //         steps {
+    //             // Add build steps here
+    //         }
+    //     }
+        
+    //     stage('Test') {
+    //         steps {
+    //             // Add test steps here
+    //         }
+    //     }
+        
+    //     // Add more stages here
+        
+    //     stage('Deploy') {
+    //         steps {
+    //             // Add deployment steps here
+    //         }
+    //     }
+    // }
+}
