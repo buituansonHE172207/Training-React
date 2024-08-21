@@ -10,7 +10,7 @@ pipeline {
         
         stage('Build and Push') {
             steps {
-                script {
+                script {f
                     // Define the image name and tag
                     def imageName = "tuansondocker1407/trainning-react"
                     def imageTag = "latest"
