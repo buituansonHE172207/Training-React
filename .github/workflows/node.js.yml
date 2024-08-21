@@ -13,6 +13,8 @@ jobs:
       - name: Install dependencies
         run: npm ci
   deploy:
+    # "Need": this keyword is used to specify that the deploy job depends on the test job
+    needs: test
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
